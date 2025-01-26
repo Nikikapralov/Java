@@ -1,9 +1,8 @@
 import Two_sum.TwoSum;
-
+import Remove_duplicates_from_sorted_array.RemoveDuplicatesSortedArray;
 public class Main {
     public static void main(String[] args) {
-        int[] array = {3, 2, 4};
-        int target = 6;
-        System.out.println(TwoSum.twoSum(array, target));
+        int[] array = {0,0,1,1,1,2,2,3,3,4};
+        System.out.println(RemoveDuplicatesSortedArray.remove_duplicates_from_sorted_array(array));
     }
 }
