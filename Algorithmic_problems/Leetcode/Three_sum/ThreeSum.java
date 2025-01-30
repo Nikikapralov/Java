@@ -34,8 +34,40 @@ public class ThreeSum {
      */
     public static List<List<Integer>> three_sum(int[] nums){
         List<List<Integer>> result = new ArrayList<>();
-        List<Integer> nums_list = new ArrayList<>(Arrays.asList(nums));
-        Collections.sort(nums_list);
+        Arrays.sort(nums);
+        int left_pointer = 0;
+        for (int i = 0; i < nums.length; ++i){
+            if (left_pointer == nums.length){
+                break;
+            }
+            int first_number = nums[i];
+            if (i >= 1 && first_number == nums[i - 1]){
+                continue;
+            }
+
+            int target = -first_number;
+            left_pointer = i + 1;
+            int right_pointer = nums.length - 1;
+
+            while (left_pointer != right_pointer && left_pointer < nums.length){
+                int left_value = nums[left_pointer];
+                int right_value = nums[right_pointer];
+                int summed = left_value + right_value;
+
+                if (summed == target){
+                    result.add(new ArrayList<>(List.of(first_number, left_value, right_value)));
+
+                    while (nums[left_pointer] == left_value && left_pointer != right_pointer){
+                        ++left_pointer;
+                    }
+                } else if (summed < target) {
+                    ++left_pointer;
+                } else {
+                    --right_pointer;
+                }
+
+            }
+        }
         return result;
     }
 }
